@@ -1,11 +1,13 @@
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 import { Button, Checkbox, Input, Typography } from "@material-tailwind/react";
 import React, { useState } from "react";
+
 const LoginForm = () => {
   const [passwordType, setPasswordType] = useState(false);
   const handlePassword = () => {
     setPasswordType(!passwordType);
   };
+
   return (
     <div>
       <div className="flex items-center ">
@@ -55,7 +57,7 @@ const LoginForm = () => {
             <div className=" flex items-center justify-end w-full px-4 ">
               <a
                 href="javascript:void(0)"
-                className="font-semibold no-underline text-black">
+                className="font-semibold no-underline text-black hover:text-blue-800">
                 Forgot your password?
               </a>
             </div>
@@ -67,7 +69,9 @@ const LoginForm = () => {
             </div>
             <div>
               Don't have a account?
-              <a href="#" className="font-semibold no-underline text-black">
+              <a
+                href="#"
+                className="font-semibold no-underline text-black hover:text-blue-800">
                 Signup
               </a>
             </div>

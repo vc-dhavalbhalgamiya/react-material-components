@@ -6,24 +6,25 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
-import DropdownMenu from "./DropdownMenu";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
+
   const pages = [
     { id: 1, path: "/", title: "Home" },
     { id: 2, path: "/company", title: "Company" },
     { id: 3, path: "/marketplace", title: "Marketplace" },
     { id: 4, path: "/features", title: "Features" },
-    { id: 5, path: "/team", title: "Team" },
-    { id: 6, path: "/contact", title: "Contact" },
+    { id: 5, path: "/hero-section", title: "Hero Section" },
+    { id: 6, path: "/signup", title: "Signup " },
   ];
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -55,10 +56,11 @@ const Header = () => {
           </Typography>
           <div className="hidden lg:block">{navList}</div>
           <Button
+            onClick={() => navigate("/login")}
             variant="gradient"
             size="sm"
             className="hidden lg:inline-block">
-            <span>Login</span>
+            Login
           </Button>
           <IconButton
             variant="text"
@@ -98,8 +100,15 @@ const Header = () => {
         <MobileNav open={openNav}>
           <div className="container mx-auto">
             {navList}
-            <Button variant="gradient" size="sm" fullWidth className="mb-2">
-              <span>Login</span>
+            <Button
+              onClick={() => {
+                navigate("/login");
+              }}
+              variant="gradient"
+              size="sm"
+              fullWidth
+              className="mb-2">
+              Login
             </Button>
           </div>
         </MobileNav>
