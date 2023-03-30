@@ -1,12 +1,9 @@
-import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
-import { Button, Chip, Typography } from "@material-tailwind/react";
 import React from "react";
-import { ProductHunt, Reddit, YouTube } from "../../icons";
 
 const HeroSection = () => {
   return (
     <div className="py-7 container mx-auto">
-      <a href="/" className="flex justify-center">
+      {/* <a href="/" className="flex justify-center">
         <div className="p-3  border rounded-3xl bg:grey-900 dark:bg-gray-900">
           <Chip
             value={
@@ -64,7 +61,7 @@ const HeroSection = () => {
             <Reddit />
           </a>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

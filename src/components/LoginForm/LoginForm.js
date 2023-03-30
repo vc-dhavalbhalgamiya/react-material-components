@@ -1,84 +1,113 @@
-import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
-import { Button, Checkbox, Input, Typography } from "@material-tailwind/react";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
-  const [passwordType, setPasswordType] = useState(false);
-  const handlePassword = () => {
-    setPasswordType(!passwordType);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => {
+    setShowPassword((show) => !show);
   };
 
   return (
-    <div>
-      <div className="flex items-center ">
-        <a
-          href="#"
-          className="inline-flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white mx-auto">
-          <img
-            className="w-8 h-8 mr-2"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-            alt="logo"
-          />
-          Flowbite
-        </a>
-      </div>
-      <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <Typography
-            variant="h4"
-            color="text-gray-900"
-            className="font-bold   dark:text-white">
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      sx={{ a: { textDecoration: "none" }, p: { xs: 1, sm: 0 } }}>
+      <Box>
+        <Link to="/">
+          <Box display="flex" alignItems="center" justifyContent="center">
+            <img
+              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
+              alt="logo"
+            />
+            <Typography sx={{ ml: { xs: 1, sm: 2 } }} variant="h6">
+              Flowbite
+            </Typography>
+          </Box>
+        </Link>
+        <Box
+          sx={{
+            maxWidth: { xs: 1, sm: 350 },
+            mt: { xs: 1, sm: 3 },
+            borderRadius: 3,
+            boxShadow: "0 5px 10px rgba(0,0,0,0.1)",
+            p: { xs: 1.5, sm: 3 },
+          }}>
+          <Typography variant="h5" fontWeight="bold">
             Sign in to your account
           </Typography>
-          <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-            <div className="px-4 mb-7">
-              <Input label="Email" maxLength={19} />
-            </div>
-            <div className="px-4 mb-3">
-              <Input
-                type={passwordType ? "password" : "text"}
-                label="Password"
-                className="border border-gray rounded w-full p-3"
-                icon={
-                  !passwordType ? (
-                    <EyeIcon
-                      className="h-5 w-5 text-blue-gray-300"
-                      onClick={handlePassword}
-                    />
-                  ) : (
-                    <EyeSlashIcon
-                      onClick={handlePassword}
-                      className="h-5 w-5 text-blue-gray-300"
-                    />
-                  )
-                }
+          <Box
+            component="form"
+            sx={{ width: 1, mt: 3 }}
+            noValidate
+            autoComplete="off">
+            <FormControl sx={{ width: 1, mb: 3 }} variant="outlined">
+              <TextField
+                sx={{ width: 1 }}
+                required
+                id="outlined-required"
+                label="Email"
+                size="small"
               />
-            </div>
-            <div className=" flex items-center justify-end w-full px-4 ">
-              <a
-                href="javascript:void(0)"
-                className="font-semibold no-underline text-black hover:text-blue-800">
-                Forgot your password?
-              </a>
-            </div>
-            <div className="px-4 mb-4 flex content-center justify-between">
-              <Checkbox className="p-0" label="Remember Me" />
-            </div>
-            <div className="px-4 mb-6">
-              <Button className=" font-semibold w-full">Sign in</Button>
-            </div>
-            <div>
-              Don't have a account?
-              <a
-                href="#"
-                className="font-semibold no-underline text-black hover:text-blue-800">
-                Signup
-              </a>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+            </FormControl>
+            <FormControl sx={{ width: 1 }} variant="outlined">
+              <TextField
+                id="outlined-adornment-password"
+                type={showPassword ? "text" : "password"}
+                size="small"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleClickShowPassword}>
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                label="Password"
+              />
+            </FormControl>
+            <Box display="flex" sx={{ pt: 1 }} justifyContent="flex-end">
+              <Link to="/password">
+                <Typography variant="small" color="">
+                  Forgot your password?
+                </Typography>
+              </Link>
+            </Box>
+            <Box display="flex" sx={{ pb: 3 }} justifyContent="flex-start">
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="Remember me"
+              />
+            </Box>
+            <Button variant="contained" sx={{ width: 1 }}>
+              {" "}
+              Sign in{" "}
+            </Button>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              sx={{ pt: 3 }}>
+              <Typography> Don't have a account?</Typography>
+              <Link to="/signup">Signup</Link>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

@@ -1,11 +1,9 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { Header, StickyHeader } from "./components";
 import { Route, Routes } from "react-router-dom";
-import Login from "./pages/Login/Login";
-import SignUp from "./pages/SignUp";
+import "./App.css";
 import HeroSection from "./pages/HeroSection/HeroSection";
 import Home from "./pages/Home";
+import Login from "./pages/Login/Login";
+import SignUp from "./pages/SignUp";
 function App() {
   return (
     <div className="App">
@@ -15,8 +13,6 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/hero-section" element={<HeroSection />} />
       </Routes>
-      {/* <Header /> */}
-      {/* <StickyHeader /> */}
     </div>
   );
 }
