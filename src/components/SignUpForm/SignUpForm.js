@@ -1,96 +1,124 @@
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import FormControl from "@mui/material/FormControl";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
-import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
-import { Button, Checkbox, Input, Typography } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+
 const SignUpForm = () => {
-  const [passwordType, setPasswordType] = useState(false);
-  const handlePassword = () => {
-    setPasswordType(!passwordType);
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => {
+    setShowPassword((show) => !show);
   };
+
   return (
-    <div>
-      <div>
-        <div className="flex items-center ">
-          <a
-            href="#"
-            className="inline-flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white mx-auto">
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      sx={{ a: { textDecoration: "none" }, p: { xs: 1, sm: 0 } }}>
+      <Box>
+        <Link to="/">
+          <Box display="flex" alignItems="center" justifyContent="center">
             <img
-              className="w-8 h-8 mr-2"
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
               alt="logo"
             />
-            Flowbite
-          </a>
-        </div>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <Typography
-              variant="h4"
-              color="text-gray-900"
-              className="font-bold   dark:text-white">
-              Create a New account
+            <Typography sx={{ ml: 2 }} variant="h6">
+              Flowbite
             </Typography>
-            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-              <div className="px-4 mb-7">
-                <Input label="Name" maxLength={19} />
-              </div>
-              <div className="px-4 mb-7">
-                <Input label="Email" maxLength={19} />
-              </div>
-              <div className="px-4 mb-7">
-                <Input
-                  type={passwordType ? "password" : "text"}
-                  label="Password"
-                  className="border border-gray rounded w-full p-3"
-                  icon={
-                    !passwordType ? (
-                      <EyeIcon
-                        className="h-5 w-5 text-blue-gray-300"
-                        onClick={handlePassword}
-                      />
-                    ) : (
-                      <EyeSlashIcon
-                        onClick={handlePassword}
-                        className="h-5 w-5 text-blue-gray-300"
-                      />
-                    )
-                  }
-                />
-              </div>
-              <div className="px-4 mb-7">
-                <Input
-                  type={passwordType ? "password" : "text"}
-                  label="Confirm Password"
-                  className="border border-gray rounded w-full p-3"
-                  icon={
-                    !passwordType ? (
-                      <EyeIcon
-                        className="h-5 w-5 text-blue-gray-300"
-                        onClick={handlePassword}
-                      />
-                    ) : (
-                      <EyeSlashIcon
-                        onClick={handlePassword}
-                        className="h-5 w-5 text-blue-gray-300"
-                      />
-                    )
-                  }
-                />
-              </div>
-
-              <div className="px-4 mb-6">
-                <Button className=" font-semibold w-full">Sign in</Button>
-              </div>
-              <div>
-                already have a account?{" "}
-                <a href="#" className="font-semibold no-underline text-black">
-                  Login
-                </a>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Box>
+        </Link>
+        <Box
+          sx={{
+            maxWidth: { xs: 1, sm: 350 },
+            mt: { xs: 1, sm: 3 },
+            borderRadius: 3,
+            boxShadow: "0 5px 10px rgba(0,0,0,0.1)",
+            p: { xs: 1.5, sm: 3 },
+          }}>
+          <Typography variant="h5" fontWeight="bold">
+            Create a New account
+          </Typography>
+          <Box
+            component="form"
+            sx={{ width: 1, mt: 3 }}
+            noValidate
+            autoComplete="off">
+            <FormControl sx={{ width: 1, mb: 3 }} variant="outlined">
+              <TextField
+                sx={{ width: 1 }}
+                required
+                id="outlined-required"
+                label="Name"
+                size="small"
+              />
+            </FormControl>
+            <FormControl sx={{ width: 1, mb: 3 }} variant="outlined">
+              <TextField
+                sx={{ width: 1 }}
+                required
+                id="outlined-required"
+                label="Email"
+                size="small"
+              />
+            </FormControl>
+            <FormControl sx={{ width: 1, mb: 3 }} variant="outlined">
+              <TextField
+                id="outlined-adornment-password"
+                type={showPassword ? "text" : "password"}
+                size="small"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleClickShowPassword}>
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                label="Password"
+              />
+            </FormControl>
+            <FormControl sx={{ width: 1, mb: 3 }} variant="outlined">
+              <TextField
+                id="outlined-adornment-password"
+                type={showPassword ? "text" : "password"}
+                size="small"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleClickShowPassword}>
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                label="Confirm Password"
+              />
+            </FormControl>
+            <Button variant="contained" sx={{ width: 1 }}>
+              Create Account
+            </Button>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              sx={{ pt: 3 }}>
+              <Typography variant="subtitle1">Don't have a account?</Typography>
+              <Link to="/login">
+                <Typography variant="subtitle1">Login</Typography>
+              </Link>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
