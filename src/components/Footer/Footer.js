@@ -15,7 +15,8 @@ const Footer = () => {
   ];
   return (
     <>
-      <Box sx={{ py: 5 }}>
+      <Box
+        sx={{ py: 5, borderBottom: "1px solid", borderColor: "borderColor" }}>
         <Box sx={{ a: { textDecoration: "none" } }}>
           <Link to="/">
             <Box display="flex" alignItems="center" justifyContent="center">
@@ -49,7 +50,7 @@ const Footer = () => {
             },
           }}>
           {pages.map((page) => (
-            <Link to={page.path}>
+            <Link to={page.path} key={page.title}>
               <Typography
                 sx={{ ml: { xs: 1, sm: 2, textTransform: "capitalize" } }}
                 variant="body1">

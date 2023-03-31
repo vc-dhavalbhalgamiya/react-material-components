@@ -1,5 +1,6 @@
 import React from "react";
 import { Footer, FooterWithSocial, Header } from "../../components";
+import FooterWithSitemap from "../../components/FooterWithSitemap";
 
 const Home = () => {
   return (
@@ -7,6 +8,7 @@ const Home = () => {
       <Header />
       <Footer />
       <FooterWithSocial />
+      <FooterWithSitemap />
     </>
   );
 };
