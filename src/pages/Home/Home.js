@@ -1,5 +1,10 @@
 import React from "react";
-import { Footer, FooterWithSocial, Header } from "../../components";
+import {
+  Footer,
+  FooterWithSitemapAndSocial,
+  FooterWithSocial,
+  Header,
+} from "../../components";
 import FooterWithSitemap from "../../components/FooterWithSitemap";
 
 const Home = () => {
@@ -9,6 +14,7 @@ const Home = () => {
       <Footer />
       <FooterWithSocial />
       <FooterWithSitemap />
+      <FooterWithSitemapAndSocial />
     </>
   );
 };

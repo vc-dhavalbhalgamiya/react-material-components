@@ -6,3 +6,4 @@ export { default as SignUpForm } from "./SignUpForm";
 export { default as SignUpFormWithIllustration } from "./SignUpFormWithIllustration";
 export { default as Footer } from "./Footer";
 export { default as FooterWithSocial } from "./FooterWithSocial";
+export { default as FooterWithSitemapAndSocial } from "./FooterWithSitemapAndSocial";
