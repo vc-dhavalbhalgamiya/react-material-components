@@ -7,3 +7,5 @@ export { default as SignUpFormWithIllustration } from "./SignUpFormWithIllustrat
 export { default as Footer } from "./Footer";
 export { default as FooterWithSocial } from "./FooterWithSocial";
 export { default as FooterWithSitemapAndSocial } from "./FooterWithSitemapAndSocial";
+export { default as ContentSectionWithImages } from "./ContentSectionWithImages";
+export { default as SocialProofContent } from "./SocialProofContent";
